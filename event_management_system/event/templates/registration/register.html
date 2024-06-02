@@ -1,0 +1,123 @@
+{% extends 'event/base.html' %}
+
+{% load static %}
+
+{% block content %}
+  <div class="register-section">
+    <div class="register-container">
+      <h2 class="register-title">Register for an Account</h2>
+      <div class="register-form-container">
+        <form method="post" class="register-form">
+          {% csrf_token %}
+          {{ form.as_p }}
+          {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+          {% endif %}
+          <p>
+            <button type="submit" class="btn btn-primary">Register</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    #content {
+      padding: 20px;
+      margin-top: 280px; /* Ensure content starts below the header */
+    }
+
+    .register-section {
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 160px); /* Adjust height considering header and footer */
+    }
+
+    .register-container {
+        max-width: 400px;
+        padding: 20px;
+        background-color: #7aefc8;
+        border: 1px solid #f68989;
+        box-shadow: 0 0 10px rgba(88, 233, 197, 0.1);
+        border-radius: 10px;
+    }
+
+    .register-title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 30px;
+        font-weight: bolder;
+        font-style: oblique;
+        color: #5065ed;
+    }
+
+    .register-form-container {
+        padding: 20px;
+    }
+
+    .register-form {
+        margin: 0 auto;
+        max-width: 300px;
+    }
+
+    .register-form label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .register-form input[type="text"],
+    .register-form input[type="email"],
+    .register-form input[type="password"] {
+        width: 100%;
+        height: 30px;
+        margin-bottom: 20px;
+        padding: 8px;
+        border: 1px solid #97ccf1;
+        border-radius: 5px;
+    }
+
+    .register-form button[type="submit"] {
+        background-color: #79ebd4;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .register-form button[type="submit"]:hover {
+        background-color: #23527c;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    /* Adjustments */
+    .register-form input[type="text"],
+    .register-form input[type="email"],
+    .register-form input[type="password"] {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .register-form button[type="submit"] {
+        font-size: 18px;
+        padding: 12px 24px;
+    }
+  </style>
+{% endblock %}
+
+

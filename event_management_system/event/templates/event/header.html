@@ -1,0 +1,23 @@
+<header class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <a href="{% url 'event_list' %}" class="header__logo">Event Management System</a>
+        </div>
+        <div class="col">
+          <nav class="header__nav">
+            <ul class="header__menu">
+              <li class="header__menuItem"><a href="{% url 'event_list' %}">Events</a></li>
+              <li class="header__menuItem"><a href="{% url 'create_event' %}">Create Event</a></li>
+              {% if request.user.is_authenticated %}
+                <li class="header__menuItem"><a href="{% url 'logout_view' %}">Logout</a></li>
+                <li class="header__menuItem"><a href="{% url 'register' %}">Register</a></li>
+              {% else %}
+                <li class="header__menuItem"><a href="{% url 'login_view' %}">Login</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>

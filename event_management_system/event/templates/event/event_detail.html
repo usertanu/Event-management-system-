@@ -1,0 +1,162 @@
+{% extends 'event/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    #header-content {
+        margin-top: 260px; /* add a gap between the header and the content */
+    }
+</style>
+<div id="header">
+    <nav>
+        <!-- your navigation links here -->
+    </nav>
+</div>
+
+<div id="content">
+    <div id="header-content">
+        <h1>{{ event.title }}</h1>
+        <img src="{{ event.banner.url }}" alt="{{ event.title }}" class="banner">
+    </div>
+
+    <div class="event-description">
+        <h3>Description:</h3>
+        <p>{{ event.description|linebreaksbr }}</p>
+        <h3>Details:</h3>
+        <p>Date: {{ event.date|linebreaksbr }}</p>
+        <p>Time: {{ event.time|linebreaksbr }}</p>
+        <p>Location: {{ event.location|linebreaksbr }}</p>
+    </div>
+
+    <div class="attendees">
+        <h2>Attendees</h2>
+        <ul>
+            {% for attendee in attendees %}
+                <li>{{ attendee.user.username }}</li>
+            {% empty %}
+                <li>No attendees yet.</li>
+            {% endfor %}
+        </ul>
+
+    <div class="register-button">
+        {% if user.is_authenticated %}
+            {% if user == event.organizer %}
+                 <!-- do nothing -->
+            {% else %}
+                <button id='register-button' onclick="location.href='{% url 'register' event.id %}'" class="btn btn-primary">Register for Event</button>
+            {% endif %}
+        {% else %}
+            <p>Please log in to register for this event.</p>
+            <button id='login-button' onclick="location.href='{% url 'login_view' %}'" class="btn btn-secondary">Login</button>
+        {% endif %}
+    </div>
+    </div>
+</div>
+
+
+
+
+<style>
+    #header {
+  background-color: #423e3e;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between; /* add this to space out the image and title */
+  align-items: center;
+}
+
+#header img {
+  flex-basis: 50%; /* set the image width to 20% of the header */
+}
+
+#header.title {
+  flex-basis: 80%; /* set the title width to 80% of the header */
+  text-align: left; /* add this to left-align the title */
+}
+
+    /* Content styles */
+    #content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    /* Event description styles */
+    .event-description {
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+
+    /* Event details styles */
+    .event-details {
+        margin: 10px;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+        max-height: 500px;
+        width: 100%;
+    }
+
+    /* Attendees styles */
+    .attendees {
+        margin-bottom: 10px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+
+    /* Register button styles */
+    .register-button {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Banner styles */
+    .banner {
+        margin-bottom: 20px;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    /* Button styles */
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #4CAF50;
+        color: #141212;
+    }
+
+    .btn-secondary {
+        background-color: #bee1ec;
+        color: #181616;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+</style>
+{% endblock %}

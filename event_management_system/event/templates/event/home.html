@@ -1,0 +1,126 @@
+<!-- home.html -->
+{% extends 'event/base.html' %}
+
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+<div>
+  <h1>Welcome to the Event Management System!!</h1>
+  <p>The all-in-one platform for managing your events.</p>
+  <p>Join us on June 15th, 2024, at the Convention Center</p>
+
+<div id="home-content">
+  <p>Here you can find and register for upcoming events, and manage your event registrations.</p>
+  <section class="hero">
+    <h2>Get Ready for an Unforgettable Experience!</h2>
+    <p>Register now and be a part of our exciting event!</p>
+    </section>
+  {% if not request.user.is_authenticated %}
+    <p>To get started, please <button id="login-button" onclick="location.href='{% url 'login_view' %}'">log in</button> or <button id="register-button" onclick="location.href='{% url 'register' %}'">register</button>.</p>
+    <section class="hero">
+      <h2>Get Ready for an Unforgettable Experience!</h2>
+      <p>Register now and be a part of our exciting event!</p>
+      </section>
+  {% else %}
+    <p>You are currently logged in as {{ request.user.username }}.</p>
+  {% endif %}
+  <div class="home-buttons">
+    <button id="events-button" onclick="location.href='{% url 'event_list' %}'">View Events</button>
+  </div>
+  <!-- Testimonials section -->
+<section class="testimonials">
+  <h2>What Our Attendees Say</h2>
+  <blockquote>
+    <p>"This event was amazing! I learned so much and met incredible people."</p>
+    <cite>John Doe, Attendee</cite>
+  </blockquote>
+  <blockquote>
+    <p>"The speakers were incredible, and the networking opportunities were endless."</p>
+    <cite>Jane Smith, Attendee</cite>
+  </blockquote>
+</section>
+
+</div>
+</div>
+{% endblock %}
+
+<style>
+  /* Hero Image Styling */
+  
+  /* Body Styling */
+.body {
+  background-image: -moz-linear-gradient();
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif; /* Add a font family */
+  margin: 0;
+  padding: 0; /* Remove default margin */
+}
+
+/* Content Styling */
+#home-content {
+  padding: 2em;
+  max-width: 800px; /* Set a maximum width for the content */
+  margin: 0 auto; /* Center the content horizontally */
+  background-color: rgba(255, 255, 255, 0.8); /* Add a white background with opacity */
+  padding: 20px; /* Add some padding to the content */
+  border-radius: 10px; /* Add a rounded corner to the content */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to the content */
+}
+
+/* Button Styling */
+.button {
+  background-color: #4CAF50; /* Green color */
+  color: white;
+  padding: 15px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: #45A049; /* Darker green on hover */
+}
+
+/* Footer Styling */
+.home-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  font-size: 14px; /* Reduce font size for footer */
+}
+
+/* Additional Styling */
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: bold; /* Make headings bold */
+  color: #333; /* Darken heading color */
+}
+
+.p {
+  font-size: 16px; 
+  color: #666;/* Increase font size for paragraphs */
+  margin-bottom: 20px; /* Add some margin to paragraphs */
+}
+
+
+.a {
+  text-decoration: none; /* Remove underline from links */
+  color: #337ab7; /* Blue color for links */
+}
+
+.a:hover {
+  color: #23527c; /* Darker blue on hover */
+}
+</style>

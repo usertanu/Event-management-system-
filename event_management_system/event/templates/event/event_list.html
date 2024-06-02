@@ -1,0 +1,79 @@
+{% extends 'event/base.html' %}
+
+{% load static %}
+{% block head %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Events</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+   .event-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+   .event-box {
+      background-color: #f7f7f7;
+      padding: 20px;
+      margin: 20px;
+      width: 250px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+   .event-box a {
+      text-decoration: none;
+      color: #337ab7;
+    }
+   .event-box a:hover {
+      color: #23527c;
+    }
+   .register-box {
+      text-align: center;
+      margin-top: 20px;
+    }
+   .register-box a {
+      background-color: #337ab7;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+   .register-box a:hover {
+      background-color: #23527c;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div>
+    <h2>Events</h2>
+    {% if events %}
+      <div class="event-list">
+        {% for event in events %}
+          <div class="event-box">
+            <a href="{% url 'event_detail' event.id %}">{{ event.title }}</a>
+          </div>
+          <div class="register-box">
+            <a href="{% url 'register' %}">Register</a>
+          </div>
+        {% empty %}
+          <div>No events found.</div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>There are currently no events. Please create a new event.</p>
+    {% endif %}
+  </div>
+{% endblock %}
+</body>
+</html>
+

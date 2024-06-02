@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e8eff0;
+  }
+  #content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #49e68d;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #fad2d2;
+  }
+  
+  a {
+    color: #1b1e1d;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  .login-form {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+  }
+  .event-list-box {
+    border: 1px solid #923206;
+    padding: 20px;
+    background-color: #f4eb71;
+    width: 50%;
+  }
+  .register-box {
+    border: 1px solid #126903;
+    padding: 10px;
+    background-color: #4ef1a0;
+    margin-top: 20px;
+    text-align: center;
+    width: 20%;
+  }
+
+  .event-box {
+    border: 1px solid #43beeb;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+  }
+  body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header {
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  form {
+    width: 50%; /* adjust this value to control the form's width */
+  }
+
+  label {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  button[type="submit"] {
+    background-color: black;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+  }
+ .banner{
+   display: block;
+   width:100%;
+   max-width: 800px;
+
+ }
+ /* styles.css */
+#hero-image {
+  background-image: url('../images/hero.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+  padding: 2em;
+  text-align: center;
+  color: #fff;
+}

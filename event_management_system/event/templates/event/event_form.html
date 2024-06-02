@@ -1,0 +1,13 @@
+{% extends 'event/base.html' %}
+
+{% load static %}
+{% block content %}
+<div>
+    <h2>{{ form.instance.title|default:"New Event" }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    </div>
+{% endblock %}
